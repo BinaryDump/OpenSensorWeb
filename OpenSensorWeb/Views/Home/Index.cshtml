@@ -1,0 +1,59 @@
+﻿@{
+    ViewBag.Title = "Open Monitor";
+}
+
+<script>
+    try {
+        var jsonTemperatureReceiver = '@Html.Raw(@ViewBag.TemperatureValues)'; //Html.Raw is needed to keep the UTF-8 encoding
+        var jsonTemperature = JSON.parse(jsonTemperatureReceiver);
+    } catch (e) {
+        console.error(e);
+    }
+
+</script>
+
+@*<div class="container">
+    <div class="jumbotron">
+        <div id="temperature"></div>*@
+<div class="chart-container" width="800px" height="600px"> 
+    <canvas id="myChart"></canvas>
+</div>
+<script>
+    function getDate(json) {
+        var array = [];
+        for (i = 0; i < json.length; i++) {
+            array.push(json[i]['CreatedDate']);
+        }
+        return array;
+    }
+
+    function getData(json) { 
+        var array = [];
+        for (i = 0; i < json.length; i++) {
+            array.push(json[i]['Value']);
+        }
+        return array;
+    }
+
+    var temperatureLabels = getDate(jsonTemperature);
+    var temperatureData = getData(jsonTemperature);
+
+    var ctx = document.getElementById("myChart").getContext('2d');
+    var myLineChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: temperatureLabels,
+            datasets: [{
+                label: "Temperature (C°)",
+                data: temperatureData
+            }]
+
+        },
+        options: {}
+    });
+</script>
+
+@*</div>
+    </div>*@
+
+
