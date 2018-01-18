@@ -178,6 +178,7 @@
     <Compile Include="Services\DataHelper.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ArduinoAndPython\ArduinoDHT11Received.py" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
@@ -206,6 +207,9 @@
     <Content Include="Models\SensorModel.edmx.diagram">
       <DependentUpon>SensorModel.edmx</DependentUpon>
     </Content>
+    <Content Include="ArduinoAndPython\pyserial-3.4-py2.py3-none-any.whl" />
+    <Content Include="ArduinoAndPython\ArduinoSide\ArduinoSide.ino" />
+    <Content Include="ArduinoAndPython\ArduinoSide\data\DHTLib.zip" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
